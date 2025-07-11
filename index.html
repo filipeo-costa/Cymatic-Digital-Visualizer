@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Three.js Audio Visualizer</title>
+	<style>body { margin: 0; overflow: hidden; }</style>
+</head>
+<body>
+	<script id="vertexshader" type="x-shader/x-vertex">
+		uniform float u_time;
+		uniform float u_frequency;
+		varying vec3 vNormal;
+
+		void main() {
+			vNormal = normalize(normalMatrix * normal);
+			vec3 newPosition = position + normal * sin(u_time + position.y * 5.0) * u_frequency * 0.01;
+			gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+		}
+	</script>
+
+  
+	<script id="fragmentshader" type="x-shader/x-fragment">
+		uniform float u_red;
+		uniform float u_green;
+		uniform float u_blue;
+		varying vec3 vNormal;
+
+		void main() {
+			float intensity = dot(vNormal, vec3(0.0, 0.0, 1.0));
+			gl_FragColor = vec4(intensity * u_red, intensity * u_green, intensity * u_blue, 1.0);
+		}
+	</script>
+
+
+	
+	<script type="module" src="/main.js"></script>
+</body>
+</html>
