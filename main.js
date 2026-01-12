@@ -1,6 +1,6 @@
 // ThreeJS importers
-import * as THREE from 'three';
-import { GUI } from 'lil-gui';
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import { GUI } from 'https://unpkg.com/lil-gui@0.19/dist/lil-gui.esm.min.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
