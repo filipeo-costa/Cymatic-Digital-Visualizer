@@ -3,9 +3,12 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Three.js Audio Visualizer</title>
-	<style>body { margin: 0; overflow: hidden; }</style>
+	<style>
+		body { margin: 0; overflow: hidden; }
+	</style>
 </head>
 <body>
+
 	<script id="vertexshader" type="x-shader/x-vertex">
 		uniform float u_time;
 		uniform float u_frequency;
@@ -18,7 +21,6 @@
 		}
 	</script>
 
-  
 	<script id="fragmentshader" type="x-shader/x-fragment">
 		uniform float u_red;
 		uniform float u_green;
@@ -27,12 +29,15 @@
 
 		void main() {
 			float intensity = dot(vNormal, vec3(0.0, 0.0, 1.0));
-			gl_FragColor = vec4(intensity * u_red, intensity * u_green, intensity * u_blue, 1.0);
+			gl_FragColor = vec4(
+				intensity * u_red,
+				intensity * u_green,
+				intensity * u_blue,
+				1.0
+			);
 		}
 	</script>
 
-
-	
-	<script type="module" src="/main.js"></script>
+	<script type="module" src="./main.js"></script>
 </body>
 </html>
